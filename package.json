@@ -1,0 +1,22 @@
+{
+  "name": "movimento-pilates-studio",
+  "version": "1.0.0",
+  "description": "Website oficial do Movimento Pilates Studio no Brooklin, São Paulo.",
+  "main": "serve.js",
+  "scripts": {
+    "start": "node serve.js",
+    "dev": "node serve.js",
+    "serve": "node serve.js"
+  },
+  "keywords": [
+    "pilates",
+    "brooklin",
+    "sao-paulo",
+    "estudio",
+    "saude",
+    "bem-estar",
+    "exercicios"
+  ],
+  "author": "Movimento Pilates Studio",
+  "license": "ISC"
+}
