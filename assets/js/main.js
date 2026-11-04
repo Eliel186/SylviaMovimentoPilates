@@ -36,7 +36,39 @@ document.addEventListener('DOMContentLoaded', () => {
   init3DTiltCards();
   initModalBooking(lenis);
   initFooterMotionTitle();
+  initNavScrollSpy();
 });
+
+/* --------------------------------------------------------------------------
+   MENU: destaca a seção que está na tela
+   -------------------------------------------------------------------------- */
+function initNavScrollSpy() {
+  const links = document.querySelectorAll('.nav-link[href^="#"]');
+  if (!links.length) return;
+
+  const byId = new Map();
+  links.forEach((link) => {
+    const section = document.querySelector(link.getAttribute('href'));
+    if (section) byId.set(section.id, link);
+  });
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) return;
+      links.forEach((l) => {
+        l.classList.remove('active');
+        l.removeAttribute('aria-current');
+      });
+      const link = byId.get(entry.target.id);
+      if (link) {
+        link.classList.add('active');
+        link.setAttribute('aria-current', 'true');
+      }
+    });
+  }, { rootMargin: '-45% 0px -50% 0px' });
+
+  byId.forEach((_, id) => observer.observe(document.getElementById(id)));
+}
 
 /* --------------------------------------------------------------------------
    1. LENIS INERTIA SMOOTH SCROLL + GSAP TICKER INTEGRATION
@@ -46,6 +78,9 @@ function initLenisScroll() {
     console.warn('[Motion] Lenis library not detected, falling back to native scroll.');
     return null;
   }
+
+  // Quem pediu menos movimento no sistema fica com a rolagem nativa
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return null;
 
   const lenis = new Lenis({
     duration: 1.25,
@@ -78,7 +113,7 @@ function initLenisScroll() {
   }
 
   // Smooth scroll for in-page anchors
-  document.querySelectorAll('a[href^="#"]:not([href="#"])').forEach((anchor) => {
+  document.querySelectorAll('a[href^="#"]:not([href="#"]):not(.skip-link)').forEach((anchor) => {
     anchor.addEventListener('click', function (e) {
       const targetId = this.getAttribute('href');
       const targetEl = document.querySelector(targetId);
@@ -802,9 +837,13 @@ function initModalBooking(lenis) {
 
   if (!modalBackdrop) return;
 
+  let lastTrigger = null;
+
   const openModal = (e) => {
     if (e) e.preventDefault();
+    lastTrigger = e ? e.currentTarget : null;
     modalBackdrop.classList.add('is-open');
+    modalBackdrop.setAttribute('aria-hidden', 'false');
     document.body.style.overflow = 'hidden';
     if (lenis) lenis.stop();
     const firstInput = modalBackdrop.querySelector('input');
@@ -813,9 +852,27 @@ function initModalBooking(lenis) {
 
   const closeModal = () => {
     modalBackdrop.classList.remove('is-open');
+    modalBackdrop.setAttribute('aria-hidden', 'true');
     document.body.style.overflow = '';
     if (lenis) lenis.start();
+    // Devolve o foco ao botão que abriu a janela
+    if (lastTrigger) lastTrigger.focus();
   };
+
+  // Mantém o Tab dentro da janela enquanto ela está aberta
+  modalBackdrop.addEventListener('keydown', (e) => {
+    if (e.key !== 'Tab') return;
+    const focusables = modalBackdrop.querySelectorAll('button, input, select, a[href]');
+    const first = focusables[0];
+    const last = focusables[focusables.length - 1];
+    if (e.shiftKey && document.activeElement === first) {
+      e.preventDefault();
+      last.focus();
+    } else if (!e.shiftKey && document.activeElement === last) {
+      e.preventDefault();
+      first.focus();
+    }
+  });
 
   openButtons.forEach(btn => btn.addEventListener('click', openModal));
   if (closeBtn) closeBtn.addEventListener('click', closeModal);
