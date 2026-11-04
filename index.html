@@ -56,7 +56,13 @@
       "ratingValue": "4.8",
       "reviewCount": "20"
     },
-    "priceRange": "$$"
+    "priceRange": "$$",
+    "openingHoursSpecification": [
+      { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday"], "opens": "07:00", "closes": "12:00" },
+      { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday"], "opens": "16:00", "closes": "21:00" },
+      { "@type": "OpeningHoursSpecification", "dayOfWeek": "Friday", "opens": "07:00", "closes": "12:00" },
+      { "@type": "OpeningHoursSpecification", "dayOfWeek": "Saturday", "opens": "08:00", "closes": "12:00" }
+    ]
   }
   </script>
 </head>
@@ -227,7 +233,7 @@
           <span class="k-word highlight-accent">Precisa</span> <span class="k-word highlight-accent">de</span> <span class="k-word highlight-accent"><em>movimento.</em></span>
         </p>
         <p class="impact-subtext reveal-fade-up">
-          Uma prática orientada para você se sentir mais forte, mais móvel e mais presente no próprio corpo.
+          Uma prática orientada para você se sentir mais forte, mais <em class="impact-flex">flexível</em> e mais presente no próprio corpo.
         </p>
       </div>
     </section>
@@ -239,7 +245,6 @@
       <div class="container pilates-grid">
         
         <div class="pilates-editorial-left reveal-fade-up">
-          <span class="eyebrow">A Essência do Método</span>
           <h2 class="heading-section pilates-title scaled-heading">
             pilates é <em>movimento.</em><br>
             mas também é <em>cuidado.</em>
@@ -293,7 +298,6 @@
     <section class="section-spacing section-experience" id="experiencia">
       <div class="container">
         <div class="experience-header reveal-fade-up">
-          <span class="eyebrow">A Experiência</span>
           <h2 class="heading-section scaled-heading">
             uma experiência <em>sob medida</em><br>
             para você.
@@ -305,16 +309,16 @@
           <div class="experience-step reveal-fade-up" data-tilt-card>
             <div class="step-text-wrap">
               <div class="step-number">01</div>
-              <h3 class="step-title">Avaliação <em>individual</em></h3>
+              <h3 class="step-title">Aulas <em>personalizadas</em></h3>
               <p class="step-description">
-                Entendemos seu corpo e seus objetivos. Uma escuta atenta da sua rotina, dores e aspirações para desenhar um ponto de partida sob medida.
+                As aulas podem ser em grupo (até 4 pessoas) ou individuais, mas sempre são adaptadas às necessidades individuais de cada aluno.
               </p>
             </div>
             <div class="step-media-wrap image-curtain-container animated-image" data-parallax-frame>
               <div class="cover" aria-hidden="true"></div>
               <div class="image-wrapper">
                 <img src="assets/images/experiencia-avaliacao.jpg" 
-                     alt="Avaliação postural e de movimento com instrutora especializada" 
+                     alt="Aula personalizada de Pilates com instrutora especializada" 
                      loading="lazy" 
                      decoding="async">
               </div>
@@ -372,7 +376,6 @@
       <div class="container">
         
         <div class="equipments-header reveal-fade-up">
-          <span class="eyebrow">Engenharia e Conforto</span>
           <h2 class="heading-section scaled-heading">
             equipamentos de <em>primeira.</em><br>
             movimentos <em>precisos.</em>
@@ -401,7 +404,7 @@
 
           <div class="equipments-spec-item" data-tilt-card>
             <span class="equipments-spec-title">Madeira nobre e conforto</span>
-            <span class="equipments-spec-desc">Estrutura estável, rolamento ultra-suave e estofamento ergonômico premium.</span>
+            <span class="equipments-spec-desc">Estrutura estável, rolamento ultra-suave e acabamento confortável.</span>
           </div>
         </div>
 
@@ -416,7 +419,6 @@
         
         <div class="studio-content-header reveal-fade-up">
           <div>
-            <span class="eyebrow">O Estúdio</span>
             <h2 class="heading-section studio-title scaled-heading">
               um espaço para <em>você.</em>
             </h2>
@@ -450,7 +452,7 @@
 
           <div class="studio-highlight-item" data-tilt-card>
             <span class="studio-highlight-title">Equipamentos de qualidade</span>
-            <span class="studio-highlight-sub">Aparelhos ergonômicos e seguros para todos os níveis de condicionamento.</span>
+            <span class="studio-highlight-sub">Aparelhos seguros para todos os níveis de condicionamento.</span>
           </div>
 
           <div class="studio-highlight-item" data-tilt-card>
@@ -470,7 +472,6 @@
         
         <div class="reviews-header-wrap reveal-fade-up">
           <div class="reviews-header-left">
-            <span class="eyebrow">Depoimentos & Experiência</span>
             <h2 class="heading-section scaled-heading">
               quem vive a experiência, <em>conta.</em>
             </h2>
@@ -565,7 +566,6 @@
       <div class="container location-grid">
         
         <div class="location-info reveal-fade-up">
-          <span class="eyebrow">Localização Privilegiada</span>
           <h2 class="heading-section location-title">
             Seu próximo movimento<br>
             começa aqui.
@@ -609,8 +609,9 @@
               <div>
                 <span class="location-detail-label">Horários</span>
                 <p class="location-detail-val">
-                  Segunda a Sexta: 07h às 21h<br>
-                  Aulas com horário agendado
+                  Segunda a Quinta: 07h às 12h e 16h às 21h<br>
+                  Sexta: 07h às 12h<br>
+                  Sábado: 08h às 12h
                 </p>
               </div>
             </div>
@@ -654,7 +655,6 @@
          ====================================================================== -->
     <section class="section-cta-final" id="agendar">
       <div class="container cta-final-inner reveal-fade-up">
-        <span class="eyebrow" style="color: #6CD2CF;">Comece Hoje</span>
         <h2 class="cta-final-headline scaled-heading">
           pronto para se <em>movimentar?</em>
         </h2>
@@ -750,7 +750,6 @@
         </svg>
       </button>
 
-      <span class="eyebrow">Atendimento Personalizado</span>
       <h3 class="modal-title">Agendar Aula Experimental</h3>
       <p class="modal-subtitle">
         Envie seus dados para atendimento direto pelo WhatsApp com a nossa equipe no Brooklin.
@@ -766,8 +765,9 @@
           <label for="modal-period" class="form-label">Período de preferência</label>
           <select id="modal-period" class="form-select">
             <option value="manhã (07h às 12h)">Manhã (07h às 12h)</option>
-            <option value="tarde (12h às 18h)">Tarde (12h às 18h)</option>
+            <option value="fim de tarde (16h às 18h)">Fim de tarde (16h às 18h)</option>
             <option value="noite (18h às 21h)">Noite (18h às 21h)</option>
+            <option value="sábado (08h às 12h)">Sábado (08h às 12h)</option>
             <option value="qualquer horário conveniente">Qualquer horário conveniente</option>
           </select>
         </div>
@@ -787,7 +787,7 @@
         </button>
 
         <p class="modal-privacy-note">
-          Resposta rápida de segunda a sexta no horário de funcionamento.
+          Resposta rápida de segunda a sábado no horário de funcionamento.
         </p>
       </form>
     </div>
