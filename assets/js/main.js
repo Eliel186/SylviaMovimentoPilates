@@ -341,11 +341,8 @@ function initHeroTitleFluidMotion() {
       parts.forEach(part => {
         if (!part) return;
         if (/^\s+$/.test(part)) {
-          const spaceSpan = document.createElement('span');
-          spaceSpan.className = 'char char-space';
-          spaceSpan.innerHTML = '&nbsp;';
-          container.appendChild(spaceSpan);
-          charList.push(spaceSpan);
+          // Espaço de texto normal: quebra a linha no lugar certo e some no fim da linha
+          container.appendChild(document.createTextNode(' '));
         } else {
           const wordWrap = document.createElement('span');
           wordWrap.className = 'word-wrap';

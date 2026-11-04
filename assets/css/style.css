@@ -3618,3 +3618,14 @@ section[id] {
 .hero-headline > .char-space {
   display: none;
 }
+
+/* HERO 2026-11-04: frase nova mais longa, título menor e FLEXÍVEL em destaque */
+.hero-headline {
+  font-size: clamp(2.45rem, 5.6vw, 5rem);
+  line-height: 1.08;
+  max-width: 15ch;
+}
+.hero-headline .hero-flex {
+  text-transform: none;
+  letter-spacing: normal;
+}
