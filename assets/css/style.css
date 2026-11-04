@@ -3602,3 +3602,19 @@ section[id] {
     height: 92px;
   }
 }
+
+/* Título do hero: cada frase em bloco próprio. Com inline-block + <br>,
+   no celular sobrava uma linha vazia entre as duas frases. */
+.hero-headline .line-wrap {
+  display: block;
+}
+
+.hero-headline br {
+  display: none;
+}
+
+/* O script da animação transforma as quebras de linha do HTML entre as frases
+   em espaços (.char-space) soltos no h1; no celular cada um ocupava uma linha. */
+.hero-headline > .char-space {
+  display: none;
+}
