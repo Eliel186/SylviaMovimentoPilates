@@ -3629,3 +3629,11 @@ section[id] {
   text-transform: none;
   letter-spacing: normal;
 }
+
+/* FOTOS REAIS 2026-11-05: vídeos do estúdio preenchem os quadros como as fotos */
+.image-wrapper video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}

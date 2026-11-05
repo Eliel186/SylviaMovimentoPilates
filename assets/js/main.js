@@ -37,6 +37,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initModalBooking(lenis);
   initFooterMotionTitle();
   initNavScrollSpy();
+  initStudioTourVideos();
 });
 
 /* --------------------------------------------------------------------------
@@ -994,3 +995,24 @@ function initFooterMotionTitle() {
   }
 }
 
+
+/* Tour do estúdio: vídeos tocam sem som só quando aparecem na tela */
+function initStudioTourVideos() {
+  const videos = document.querySelectorAll('.tour-video');
+  if (!videos.length) return;
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduce || !('IntersectionObserver' in window)) {
+    videos.forEach(v => { v.controls = true; });
+    return;
+  }
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(({ target, isIntersecting }) => {
+      if (isIntersecting) {
+        target.play().catch(() => { target.controls = true; });
+      } else {
+        target.pause();
+      }
+    });
+  }, { threshold: 0.35 });
+  videos.forEach(v => io.observe(v));
+}
